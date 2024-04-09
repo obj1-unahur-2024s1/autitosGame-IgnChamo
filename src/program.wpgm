@@ -1,0 +1,25 @@
+import wollok.game.*
+import auto.*
+
+program miPrimerWollokGame {
+	// límites del tablero de juego
+	game.width(14)
+	game.height(8)
+
+	// fondo del tablero de juego
+	game.boardGround("empedrado.jpg")
+	
+	game.addVisual(auto)
+	game.addVisual(caja)
+
+	keyboard.w().onPressDo({auto.arriba(1)})
+	keyboard.s().onPressDo({auto.abajo(1)})
+	keyboard.a().onPressDo({auto.izquierda(1)})
+	keyboard.d().onPressDo({auto.derecha(1)})
+	
+	
+	game.whenCollideDo(auto,{ elemento => auto.derecha(1)})
+		// que arranque el juego!
+	game.start()
+
+}
